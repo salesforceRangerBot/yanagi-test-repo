@@ -1,0 +1,39 @@
+{
+  "packageDirectories": [
+    {
+      "path": "force-app",
+      "default": true,
+      "package": "I_AM_PRACTISING",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "versionDescription": ""
+    },
+    {
+      "path": "force-app",
+      "package": "I_AM_PRACTISING1",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "default": false,
+      "versionDescription": ""
+    },
+    {
+      "path": "force-app",
+      "package": "I_AM_PRACTISING2",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "default": false,
+      "versionDescription": ""
+    }
+  ],
+  "name": "AssessmentOrgOneData",
+  "namespace": "I_AM_PRACTISING",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "59.0",
+  "packageAliases": {
+    "I_AM_PRACTISING": "0Ho5h000000blkMCAQ",
+    "I_AM_PRACTISING@0.1.0-1": "04t5h000000i79FAAQ",
+    "I_AM_PRACTISING1": "0Ho5h000000blkRCAQ",
+    "I_AM_PRACTISING1@0.1.0-1": "04t5h000000i79UAAQ",
+    "I_AM_PRACTISING2": "0Ho5h000000blkWCAQ"
+  }
+}

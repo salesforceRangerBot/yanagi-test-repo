@@ -1,0 +1,54 @@
+<template>
+<template if:true={showDataTable}>
+    <div class="slds-p-around_small" style="background-color:blueviolet">
+    <lightning-card title="Lwc Account List" icon-name="standard:account">
+        <div style="background-color:#879c91;">
+        <lightning-button class="slds-align_absolute-center" variant="brand" label="Create Account" onclick={createAccount}></lightning-button></div>
+        <lightning-datatable key-field="id" 
+            data={accountList}
+            columns={columns}>
+            </lightning-datatable>
+        </lightning-card>  
+        </div> 
+</template>
+<template if:true={openAccountFrom}>
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+        <div class="slds-modal__header">
+            <lightning-button-icon icon-name="utility:close"
+            onclick={closeAccountModal}
+            alternative-text="close"
+            variant="bare"
+            class="slds-modal__close"></lightning-button-icon>
+        <h1 id="modal-heading-02" class="slds-modal__title slds-hyphenate">Create Account</h1>
+        </div>
+        <div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-2">
+        <lightning-card>
+        <div class="slds-p-around_medium" style="background-color:cadetblue">
+        <lightning-record-edit-form 
+                    object-api-name="Account"
+                   
+                    onsuccess={submit}>
+                    <lightning-input-field field-name="Name"> </lightning-input-field>
+                    <lightning-input-field field-name="Email__c"> </lightning-input-field>
+                    <lightning-input-field field-name="AnnualRevenue"> </lightning-input-field>
+
+                      
+                    <lightning-button class="slds-m-top_small" variant="brand" type="submit" name="Save" label="Save"></lightning-button>
+        </lightning-record-edit-form>
+    </div>
+    
+    </lightning-card>
+        <footer class="slds-modal__footer">
+                <lightning-button variant="neutral"
+                                    label="Cancel"
+                                    title="Cancel"
+                                    onclick={closeModel}></lightning-button>
+            </footer>
+        </div>
+        </div>
+        </section>
+        
+    
+</template>
+</template>

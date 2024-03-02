@@ -1,0 +1,58 @@
+<aura:component controller="AccountList" implements="force:appHostable,flexipage:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="SelectedRecordId" type="String"/>
+    <aura:attribute name="columnsToDisplay" type="List"></aura:attribute>
+    <aura:attribute name="Accounts" type="Account[]"></aura:attribute>
+      <aura:attribute name="showAccountList" type="Boolean" default="false"/>
+      <aura:attribute name="showAccCreateFrom" type="Boolean" default="false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.myAction}"/>
+      <aura:if isTrue="{!v.showAccountList}">
+          <div class="slds-p-around_small" style="background-color:#a9b86a">
+    <lightning:card title="Aura Account List" iconName="standard:account">
+        <div style="background-color:#88bdcf;">
+        <lightning:button variant="brand" label="Create Account"  onclick ="{!c.CreateRecord}" class="slds-align_absolute-center"/></div>
+            <lightning:datatable
+                                 keyField="id"
+                                 data="{!v.Accounts}"
+                                 columns="{!v.columnsToDisplay}"
+                                >
+            </lightning:datatable>
+    </lightning:card>
+              </div>
+             </aura:if>
+    <aura:if isTrue="{!v.showAccCreateFrom}">
+         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close"
+                                          onclick="{!c.closeAccountForm }"
+                                          alternativeText="close"
+                                          variant="container"
+                                          iconClass="dark"
+                                          class="slds-modal__close"/>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Create Account</h2>
+                </header>
+              <lightning:card >
+                      <div class="slds-p-around_medium" style="background-color:#db8539;">
+                     <lightning:recordEditForm aura:id="recordCreateForm"
+                                   objectApiName="Account" onsuccess="{!c.Submit}">
+                         <div>
+                        <lightning:inputField fieldName="Name" />
+                        <lightning:inputField fieldName="Email__c"/>
+                        <lightning:inputField fieldName="Phone"/>
+                    </div>
+                            <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="Save" label="Save" />
+                   </lightning:recordEditForm>
+                          </div>
+                <lightning:messages />
+    </lightning:card>
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="neutral"
+                                      label="Cancel"
+                                      title="Cancel"
+                                      onclick="{!c.closeModel}"/>
+                </footer>
+            </div>
+        </section>
+   
+        </aura:if>
+</aura:component>
